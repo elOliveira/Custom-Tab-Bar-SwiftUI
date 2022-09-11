@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Home: View {
-    @State var selectedTab = "house"
+    @State var selectedTab = "pawprint"
 
     var body: some View {
 
