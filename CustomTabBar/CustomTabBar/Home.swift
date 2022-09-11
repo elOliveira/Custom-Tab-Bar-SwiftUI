@@ -17,7 +17,8 @@ struct Home: View {
                 .ignoresSafeArea()
             // Custom TAB BAR
             CustomTabBar(selectedTab: $selectedTab)
-        })
+            
+        }).ignoresSafeArea()
     }
 }
 

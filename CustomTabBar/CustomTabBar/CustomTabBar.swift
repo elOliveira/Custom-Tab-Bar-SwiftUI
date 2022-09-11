@@ -14,28 +14,30 @@ struct CustomTabBar: View {
     @State var tabPoints: [CGFloat] = []
 
     var body: some View {
-        HStack(spacing:0){
-            TabBarButton(image: "magnifyingglass.circle", selectedTab: $selectedTab, tabPoints: $tabPoints)
-            TabBarButton(image: "bubble.left.and.bubble.right", selectedTab: $selectedTab, tabPoints: $tabPoints)
-            TabBarButton(image: "pawprint", selectedTab: $selectedTab, tabPoints: $tabPoints)
-            TabBarButton(image: "globe.americas", selectedTab: $selectedTab, tabPoints: $tabPoints)
-            TabBarButton(image: "bell", selectedTab: $selectedTab, tabPoints: $tabPoints)
-        }
-        .padding()
-        .background(
-            Color.white
-                .clipShape(TabCurve(tabPoint: getCurvePoint() - 15))
-        )
-        .overlay(
-            Circle()
-                .fill(Color.yellow)
-                .frame(width: 10, height: 10)
-                .offset(x: getCurvePoint() - 20)
-            
-            ,alignment: .bottomLeading
-        )
-        .cornerRadius(30)
+        ZStack {
+            HStack(spacing:0){
+                TabBarButton(image: "magnifyingglass.circle", selectedTab: $selectedTab, tabPoints: $tabPoints)
+                TabBarButton(image: "bubble.left.and.bubble.right", selectedTab: $selectedTab, tabPoints: $tabPoints)
+                TabBarButton(image: "pawprint", selectedTab: $selectedTab, tabPoints: $tabPoints)
+                TabBarButton(image: "globe.americas", selectedTab: $selectedTab, tabPoints: $tabPoints)
+                TabBarButton(image: "bell", selectedTab: $selectedTab, tabPoints: $tabPoints)
+            }
+            .padding()
+            .background(
+                Color.white
+                    .clipShape(TabCurve(tabPoint: getCurvePoint() - 15))
+            )
+            .overlay(
+                Circle()
+                    .fill(Color.yellow)
+                    .frame(width: 10, height: 10)
+                    .offset(x: getCurvePoint() - 20)
+                
+                ,alignment: .bottomLeading
+            )
+            .cornerRadius(30)
         .padding(.horizontal)
+        }.padding(.bottom, 16)
     }
     // extracting point...
     func getCurvePoint() -> CGFloat {
@@ -48,12 +50,12 @@ struct CustomTabBar: View {
                 return tabPoints[0]
             case "bubble.left.and.bubble.right":
                 return tabPoints[1]
-            case "pawprint":
-                return tabPoints[2]
+            case "bell":
+                return tabPoints[4]
             case "globe.americas":
                 return tabPoints[3]
             default:
-                return tabPoints[4]
+                return tabPoints[2]
             }
         }
     }
